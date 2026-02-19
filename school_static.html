@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โรงเรียนบ้านโป่งแมลงวัน (จิราธิวัฒน์อุปถัมภ์)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #ffffff;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ec4899;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(236, 72, 153, 0.7), rgba(219, 39, 119, 0.7)), 
+                        url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 1rem;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 1rem;
+        }
+
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #ec4899;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #ec4899;
+            padding-bottom: 0.75rem;
+        }
+
+        section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #ec4899;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #ec4899;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h4 {
+            color: #ec4899;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        table thead {
+            background-color: #ec4899;
+            color: white;
+        }
+
+        table th, table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        table tbody tr:hover {
+            background-color: #f9fafb;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e5e7eb;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #6b7280;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            color: #ec4899;
+            border-bottom-color: #ec4899;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-overlay span {
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* Contact Form */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #1f2937;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            font-family: 'Noto Sans Thai', sans-serif;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #ec4899;
+            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.1);
+        }
+
+        button {
+            background-color: #ec4899;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #db2777;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            color: white;
+            padding: 3rem 1rem 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #ec4899;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ec4899;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 800px;
+            max-height: 90vh;
+            overflow: auto;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+        }
+
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            table th, table td {
+                padding: 0.5rem;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-2 {
+            margin-top: 1rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 1rem;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ec4899, transparent);
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-circle">บ</div>
+                    <div>
+                        <div>โรงเรียนบ้านโป่งแมลงวัน</div>
+                        <div style="font-size: 0.85rem; opacity: 0.9;">จิราธิวัฒน์อุปถัมภ์</div>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">หน้าแรก</a></li>
+                        <li><a href="#about">เกี่ยวกับเรา</a></li>
+                        <li><a href="#admin">โครงสร้าง</a></li>
+                        <li><a href="#curriculum">หลักสูตร</a></li>
+                        <li><a href="#gallery">แกลเลอรี่</a></li>
+                        <li><a href="#contact">ติดต่อ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>โรงเรียนบ้านโป่งแมลงวัน</h1>
+        <p>สถาบันการศึกษาที่มุ่งเน้นการพัฒนาคุณธรรมและสติปัญญา</p>
+        <p style="font-size: 1rem; opacity: 0.95;">หมู่ที่ 5 ตำบลโคกกรวด อำเภอเมือง จังหวัดนครราชสีมา</p>
+    </section>
+
+    <!-- About Section -->
+    <section class="container" id="about">
+        <h2>เกี่ยวกับโรงเรียน</h2>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab(event, 'history')">ประวัติ</button>
+            <button class="tab-btn" onclick="switchTab(event, 'vision')">วิสัยทัศน์</button>
+            <button class="tab-btn" onclick="switchTab(event, 'mission')">พันธกิจ</button>
+            <button class="tab-btn" onclick="switchTab(event, 'philosophy')">ปรัชญา</button>
+        </div>
+
+        <div id="history" class="tab-content active">
+            <h3>ประวัติโรงเรียน</h3>
+            <p>โรงเรียนบ้านโป่งแมลงวัน (จิราธิวัฒน์อุปถัมภ์) ตั้งอยู่ที่หมู่ที่ 5 ตำบลโคกกรวด อำเภอเมือง จังหวัดนครราชสีมา รหัสไปรษณีย์ 30000 เป็นสถาบันการศึกษาที่มีประวัติยาวนาน ตั้งมาตั้งแต่ปีพ.ศ. 2500 โดยมีวัตถุประสงค์เพื่อให้การศึกษาแก่เยาวชนในท้องถิ่น</p>
+            <p>ตลอดระยะเวลากว่า 60 ปี โรงเรียนได้ให้การศึกษาแก่นักเรียนนับหมื่นคน ซึ่งหลายคนได้ประสบความสำเร็จในการศึกษาต่อและการประกอบอาชีพ โรงเรียนมีความมุ่งมั่นในการพัฒนาหลักสูตรการศึกษาให้ทันสมัยและเหมาะสมกับการเปลี่ยนแปลงของสังคม</p>
+        </div>
+
+        <div id="vision" class="tab-content">
+            <h3>วิสัยทัศน์</h3>
+            <p>เป็นสถาบันการศึกษาที่มีคุณภาพ ส่งเสริมการพัฒนาคุณธรรมและสติปัญญา สร้างสรรค์บุคลากรที่มีความรู้ ความสามารถ และจิตสำนึกที่ดี เพื่อเป็นพลเมืองที่มีประโยชน์ต่อสังคม ชาติ และศาสนา</p>
+        </div>
+
+        <div id="mission" class="tab-content">
+            <h3>พันธกิจ</h3>
+            <ul style="margin-left: 2rem;">
+                <li>จัดการศึกษาให้มีคุณภาพและเป็นมาตรฐาน</li>
+                <li>ส่งเสริมการพัฒนาคุณธรรมและสติปัญญาของนักเรียน</li>
+                <li>พัฒนาหลักสูตรและวิธีการเรียนการสอนให้ทันสมัย</li>
+                <li>สร้างสภาพแวดล้อมที่เอื้อต่อการเรียนรู้</li>
+                <li>ส่งเสริมความสัมพันธ์ระหว่างโรงเรียน ครอบครัว และชุมชน</li>
+            </ul>
+        </div>
+
+        <div id="philosophy" class="tab-content">
+            <h3>ปรัชญา</h3>
+            <p>"การศึกษาเป็นรากฐานของการพัฒนาบุคคล ครอบครัว ชุมชน และประเทศชาติ ดังนั้นเราจึงมุ่งมั่นในการให้การศึกษาที่มีคุณภาพ ส่งเสริมการพัฒนาศักยภาพของนักเรียน และปลูกฝังคุณธรรมที่เป็นรากฐานของความเป็นมนุษย์ที่ดี"</p>
+        </div>
+    </section>
+
+    <!-- Administration Section -->
+    <section class="container" id="admin">
+        <h2>โครงสร้างการบริหาร</h2>
+        
+        <h3>ผู้บริหาร</h3>
+        <div class="grid-2">
+            <div class="card">
+                <h4>ผู้อำนวยการโรงเรียน</h4>
+                <p><strong>นายสมชาย ใจดี</strong></p>
+                <p>ปริญญาตรี วิทยาศาสตร์การศึกษา</p>
+                <p>ประสบการณ์ 25 ปี</p>
+            </div>
+            <div class="card">
+                <h4>รองผู้อำนวยการ</h4>
+                <p><strong>นางสาวสุนันทา ศรีสุข</strong></p>
+                <p>ปริญญาตรี มนุษยศาสตร์</p>
+                <p>ประสบการณ์ 18 ปี</p>
+            </div>
+        </div>
+
+        <h3>คณะครูและบุคลากร</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ชื่อ-สกุล</th>
+                    <th>ตำแหน่ง</th>
+                    <th>วิทยฐานะ</th>
+                    <th>วุฒิการศึกษา</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>นายสมชาย ใจดี</td>
+                    <td>ผู้อำนวยการ</td>
+                    <td>ครูชำนาญการพิเศษ</td>
+                    <td>ปริญญาโท</td>
+                </tr>
+                <tr>
+                    <td>นางสาวสุนันทา ศรีสุข</td>
+                    <td>รองผู้อำนวยการ</td>
+                    <td>ครูชำนาญการ</td>
+                    <td>ปริญญาตรี</td>
+                </tr>
+                <tr>
+                    <td>นายวิชัย ศรีมณฑ์</td>
+                    <td>ครูผู้สอน</td>
+                    <td>ครูชำนาญการ</td>
+                    <td>ปริญญาตรี</td>
+                </tr>
+                <tr>
+                    <td>นางสาวมณฑา ดวงใจ</td>
+                    <td>ครูผู้สอน</td>
+                    <td>ครูชำนาญการ</td>
+                    <td>ปริญญาตรี</td>
+                </tr>
+                <tr>
+                    <td>นายอนุชิต ธรรมชาติ</td>
+                    <td>ครูผู้สอน</td>
+                    <td>ครูมัธยม</td>
+                    <td>ปริญญาตรี</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="container" id="curriculum">
+        <h2>หลักสูตรการเรียนการสอน</h2>
+        
+        <h3>ระดับชั้นที่เปิดสอน</h3>
+        <div class="grid-3">
+            <div class="card">
+                <h4>ชั้นประถมศึกษา</h4>
+                <p>ป.1 - ป.6</p>
+                <p>หลักสูตรเน้นพื้นฐาน การอ่าน การเขียน การคิดคำนวณ</p>
+            </div>
+            <div class="card">
+                <h4>ชั้นมัธยมศึกษาตอนต้น</h4>
+                <p>ม.1 - ม.3</p>
+                <p>หลักสูตรเน้นการพัฒนาทักษะและความรู้พื้นฐาน</p>
+            </div>
+            <div class="card">
+                <h4>ชั้นมัธยมศึกษาตอนปลาย</h4>
+                <p>ม.4 - ม.6</p>
+                <p>หลักสูตรเน้นการเตรียมสอบเข้ามหาวิทยาลัย</p>
+            </div>
+        </div>
+
+        <h3>แนวทางการจัดการเรียนรู้</h3>
+        <div class="grid-2">
+            <div class="card">
+                <h4>📚 การเรียนการสอนแบบศูนย์กลางผู้เรียน</h4>
+                <p>เน้นการเรียนรู้ที่ยืดหยุ่น ให้นักเรียนเป็นศูนย์กลาง และสามารถเลือกวิธีการเรียนรู้ที่เหมาะสมกับตนเอง</p>
+            </div>
+            <div class="card">
+                <h4>🔬 การเรียนรู้ผ่านประสบการณ์</h4>
+                <p>ส่งเสริมให้นักเรียนได้ลงมือปฏิบัติจริง เพื่อให้เกิดการเรียนรู้ที่ลึกซึ้ง</p>
+            </div>
+            <div class="card">
+                <h4>🤝 การเรียนรู้แบบร่วมมือ</h4>
+                <p>ส่งเสริมการทำงานเป็นกลุ่ม เพื่อพัฒนาทักษะการสื่อสารและการทำงานเป็นทีม</p>
+            </div>
+            <div class="card">
+                <h4>💻 การเรียนรู้ด้วยเทคโนโลยี</h4>
+                <p>ใช้เทคโนโลยีสารสนเทศเพื่อสนับสนุนการเรียนรู้ของนักเรียน</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="container" id="gallery">
+        <h2>แกลเลอรี่ภาพกิจกรรม</h2>
+        
+        <div class="gallery">
+            <div class="gallery-item" onclick="openModal(this.querySelector('img').src)">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=300&h=200&fit=crop" alt="กิจกรรมวันเด็ก">
+                <div class="gallery-item-overlay"><span>🔍</span></div>
+            </div>
+            <div class="gallery-item" onclick="openModal(this.querySelector('img').src)">
+                <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=300&h=200&fit=crop" alt="กีฬาสีประจำปี">
+                <div class="gallery-item-overlay"><span>🔍</span></div>
+            </div>
+            <div class="gallery-item" onclick="openModal(this.querySelector('img').src)">
+                <img src="https://images.unsplash.com/photo-1578321272176-b7bbc0b6e5d5?w=300&h=200&fit=crop" alt="นิทรรศการศิลปะ">
+                <div class="gallery-item-overlay"><span>🔍</span></div>
+            </div>
+            <div class="gallery-item" onclick="openModal(this.querySelector('img').src)">
+                <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=300&h=200&fit=crop" alt="กิจกรรมอาสาสมัคร">
+                <div class="gallery-item-overlay"><span>🔍</span></div>
+            </div>
+            <div class="gallery-item" onclick="openModal(this.querySelector('img').src)">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=300&h=200&fit=crop" alt="ประกวดร้องเพลง">
+                <div class="gallery-item-overlay"><span>🔍</span></div>
+            </div>
+            <div class="gallery-item" onclick="openModal(this.querySelector('img').src)">
+                <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=300&h=200&fit=crop" alt="โครงงานวิทยาศาสตร์">
+                <div class="gallery-item-overlay"><span>🔍</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="container" id="contact">
+        <h2>ติดต่อเรา</h2>
+        
+        <div class="grid-2">
+            <div>
+                <h3>ข้อมูลติดต่อ</h3>
+                <p><strong>ชื่อโรงเรียน:</strong> โรงเรียนบ้านโป่งแมลงวัน (จิราธิวัฒน์อุปถัมภ์)</p>
+                <p><strong>ที่อยู่:</strong> หมู่ที่ 5 ตำบลโคกกรวด อำเภอเมือง จังหวัดนครราชสีมา รหัสไปรษณีย์ 30000</p>
+                <p><strong>อีเมล:</strong> <a href="mailto:pmaelngwan@gmail.com" style="color: #ec4899;">pmaelngwan@gmail.com</a></p>
+                <p><strong>โทรศัพท์:</strong> <input type="text" placeholder="ใส่หมายเลขโทรศัพท์" style="width: 200px; padding: 0.5rem;"></p>
+                
+                <h3 style="margin-top: 2rem;">แผนที่ตำแหน่ง</h3>
+                <iframe width="100%" height="300" style="border-radius: 8px; border: none;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.8926827455503!2d101.43!3d14.97!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31228f8e8e8e8e8f%3A0x1234567890abcdef!2z4LiK4Liy4Lia4Lix4Lil4Lih4Liy4LiU4Liy4Lih4Liy4LiH4Liy4Lih4Lia4Lih4Liy4LiU4Liy4Lih4Lia4Lih4Liy4LiH!5e0!3m2!1sth!2sth!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div>
+                <h3>แบบฟอร์มติดต่อ</h3>
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">ชื่อ-สกุล *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">อีเมล *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">โทรศัพท์</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">หัวข้อ *</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">ข้อความ *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit">ส่งข้อความ</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>เกี่ยวกับโรงเรียน</h4>
+                    <p>โรงเรียนบ้านโป่งแมลงวัน (จิราธิวัฒน์อุปถัมภ์) เป็นสถาบันการศึกษาที่มุ่งเน้นการพัฒนาคุณธรรมและสติปัญญาของนักเรียน</p>
+                </div>
+                <div class="footer-section">
+                    <h4>ลิงก์ด่วน</h4>
+                    <ul>
+                        <li><a href="#home">หน้าแรก</a></li>
+                        <li><a href="#about">เกี่ยวกับเรา</a></li>
+                        <li><a href="#admin">โครงสร้าง</a></li>
+                        <li><a href="#curriculum">หลักสูตร</a></li>
+                        <li><a href="#gallery">แกลเลอรี่</a></li>
+                        <li><a href="#contact">ติดต่อ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>ติดต่อเรา</h4>
+                    <p>📍 หมู่ที่ 5 ตำบลโคกกรวด อำเภอเมือง จังหวัดนครราชสีมา</p>
+                    <p>📧 <a href="mailto:pmaelngwan@gmail.com">pmaelngwan@gmail.com</a></p>
+                    <p>📞 <a href="tel:0441234567">044-123-4567</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 โรงเรียนบ้านโป่งแมลงวัน (จิราธิวัฒน์อุปถัมภ์) สงวนลิขสิทธิ์</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Gallery -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        // Tab Switching
+        function switchTab(event, tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Gallery Modal
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = src;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        // Form Submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Simple validation
+            if (name && email && subject && message) {
+                alert('ขอบคุณที่ติดต่อเรา!\n\nข้อมูลของคุณ:\nชื่อ: ' + name + '\nอีเมล: ' + email + '\n\nเราจะติดต่อกลับในเร็วๆนี้');
+                event.target.reset();
+            }
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
